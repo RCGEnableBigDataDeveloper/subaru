@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
-public class TestUDF extends UDF {
-	public TestUDF() {
+public class IUnMask extends UDF {
+	public IUnMask() {
 
 	}
 
@@ -15,7 +15,7 @@ public class TestUDF extends UDF {
 			return null;
 		} else {
 			try {
-					return EncryptDecryptUtil.encrypt(str);
+					return EncryptDecryptUtil.decrypt(str);
 			} catch (Exception e) {
 				return null;
 			}

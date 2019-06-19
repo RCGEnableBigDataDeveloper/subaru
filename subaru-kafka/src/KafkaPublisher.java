@@ -10,20 +10,19 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.log4j.Logger;
 
 public class KafkaPublisher {
-	
+
 	final static Logger logger = Logger.getLogger(KafkaPublisher.class);
-	
+
 	public static void main(String[] args) throws Exception {
 		KafkaPublisher kp = new KafkaPublisher();
 		kp.publish(args[0]);
 	}
-	
+
 	public void publish(String topic) throws Exception {
-		
+
 		System.out.println(topic);
-		
+
 		String json = IOUtils.toString(KafkaPublisher.class.getResourceAsStream("/data.json"));
-		
 
 		Properties kafkaProperties = new Properties();
 
@@ -33,24 +32,22 @@ public class KafkaPublisher {
 		kafkaProperties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		kafkaProperties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		kafkaProperties.put("security.protocol", "SASL_SSL");
-		kafkaProperties.put("sasl.kerberos.service.name","kafka");
-		
+		kafkaProperties.put("sasl.kerberos.service.name", "kafka");
+
 		System.out.println(kafkaProperties);
-		
+
 		Producer<String, String> producer = new KafkaProducer<String, String>(kafkaProperties);
 
 		for (int i = 0; i < 10; i++) {
 			long time = System.currentTimeMillis();
-			
+
 			json = String.format(json, i);
 
-
 			System.out.println("sending new record " + json);
-		
+
 //			producer.send(new ProducerRecord<String, String>("test3", Integer.toString(i), Integer.toString(i)));
 
-			producer.send(new ProducerRecord<String, String>(topic, Integer.toString(i), json),
-					new ProducerCallback());
+			producer.send(new ProducerRecord<String, String>(topic, Integer.toString(i), json), new ProducerCallback());
 
 			System.out.println("record " + i + " sent successfully in " + (System.currentTimeMillis() - time) + " ms");
 		}
@@ -58,22 +55,15 @@ public class KafkaPublisher {
 		producer.close();
 
 	}
-	
-	 private class ProducerCallback implements Callback {
 
-	        @Override
+	private class ProducerCallback implements Callback {
 
-	        public void onCompletion(RecordMetadata recordMetadata, Exception ex) {
+		@Override
+		public void onCompletion(RecordMetadata recordMetadata, Exception ex) {
 
-	            if (ex != null) {
-
-	              
-	              ex.printStackTrace();
-	             // logger.error("Error when publishing messages to the topic. Topic :"+ recordMetadata.topic(),ex);
-
-	            }
-
-	        }
-
-	    }
+			if (ex != null) {
+				ex.printStackTrace();
+			}
+		}
+	}
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
-public class TestUDF extends UDF {
-	public TestUDF() {
+public class IMask extends UDF {
+	public IMask() {
 
 	}
 
