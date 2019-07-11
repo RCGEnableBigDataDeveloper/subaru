@@ -1,0 +1,3 @@
+ADD JAR /home/soaadmin/mask.jar;
+
+insert into edw.w_vehicle_d select vehicle_key,mask(integration_id),mask(vin_prefix),mask(vin),model_key,production_dt,sale_dt,warr_start_dt,msrp_amt,dlr_inv_amt,odomtr_rdg,demo_flg,demo_dt,disposer_flg,delivery_dt,created_on_dt,changed_on_dt,delete_flg,insert_dt,update_dt,srvc_cntrct_type,prod_month_year,prod_year,prod_month,foreign_veh_ind ,engine_nbr,transm_nbr,subaru_ind ,tm_enable_flg ,lemon_law_flg ,polk_info_flg from edw.w_vehicle_d_stg;
