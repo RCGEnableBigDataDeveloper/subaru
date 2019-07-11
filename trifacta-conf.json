@@ -1,0 +1,1619 @@
+{
+ "alation": {
+  "catalogHost": "<YOUR_VALUE_HERE>",
+  "enabled": false,
+  "sdkPath": "/integration/catalog_chooser/v1/sdk.js"
+ },
+ "artifact-storage-service": {
+  "autoRestart": false,
+  "classpath": "%(topOfTree)s/services/artifact-storage-service/build/install/artifact-storage-service/artifact-storage-service.jar:%(topOfTree)s/services/artifact-storage-service/build/install/artifact-storage-service/lib/*:%(topOfTree)s/%(hadoopBundleJar)s",
+  "database": {
+   "host": "localhost",
+   "mysqlServerTimezone": "",
+   "name": "trifactaartifactstorageservice",
+   "password": "trifactaartifactstorageservice",
+   "poolMaxSize": "20",
+   "port": "5432",
+   "type": "POSTGRESQL",
+   "username": "trifactaartifactstorageservice",
+   "verifyServerCertificate": "false"
+  },
+  "enabled": true,
+  "host": "localhost",
+  "mainClass": "com.trifacta.artifactstorageservice.ArtifactStorageServiceApp",
+  "port": 41916,
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "logging.level": "info",
+   "server.max-request-size": "128MB",
+   "server.port": "%(artifact-storage-service.port)s"
+  }
+ },
+ "atlas": {
+  "cluster": {
+   "host": "<YOUR_VALUE_HERE>",
+   "name": "hadoop-atlas",
+   "port": 21000,
+   "protocol": "http"
+  },
+  "enabled": false,
+  "password": "<YOUR_VALUE_HERE>",
+  "username": "<YOUR_VALUE_HERE>"
+ },
+ "aws": {
+  "accountId": "<YOUR_VALUE_HERE>",
+  "credentialProvider": "default",
+  "ec2InstanceRoleForAssumeRole": false,
+  "emr": {
+   "authMode": "system",
+   "enableMultipleClusters": false,
+   "extractIPFromDNS": false,
+   "forceInstanceRole": false,
+   "forceInstanceRoleForSTS": false,
+   "getLogsForAllJobs": false,
+   "getLogsOnFailure": true,
+   "jobTagPrefix": "TRIFACTA_JOB_",
+   "maxLogPollingRetries": 10,
+   "proxyUser": "hadoop",
+   "tempfilesCleanupAge": 0
+  },
+  "hadoopFsUseSharedInstanceProvider": true,
+  "mode": "system",
+  "readFromConfigurationService": false,
+  "requireScopeDownPolicy": false,
+  "s3": {
+   "bucket": {
+    "name": "<YOUR_VALUE_HERE>"
+   },
+   "consistencyTimeout": 120,
+   "enabled": false,
+   "endpoint": "",
+   "extraBuckets": [
+   ],
+   "key": "<YOUR_VALUE_HERE>",
+   "secret": "<YOUR_VALUE_HERE>",
+   "serverSideEncryption": "none",
+   "serverSideKmsKeyId": ""
+  },
+  "systemIAMRole": "<YOUR_VALUE_HERE>"
+ },
+ "azure": {
+  "adl": {
+   "enabled": false,
+   "mode": "system",
+   "store": "<YOUR_VALUE_HERE>"
+  },
+  "applicationid": "<YOUR_VALUE_HERE>",
+  "directoryid": "<YOUR_VALUE_HERE>",
+  "keyVaultUrl": "<YOUR_VALUE_HERE>",
+  "managedIdentities": {
+   "enabled": false,
+   "keyVaultApplicationSecretSecretName": "<YOUR_VALUE_HERE>",
+   "keyVaultApplicationidSecretName": "<YOUR_VALUE_HERE>"
+  },
+  "resourceURL": "https://graph.windows.net/",
+  "secret": "<YOUR_VALUE_HERE>",
+  "sso": {
+   "allowHttpForRedirectUrl": false,
+   "enableAutoRegistration": true,
+   "enabled": false,
+   "redirectUrl": "http://localhost:3005/sign-in/azureCallback"
+  },
+  "wasb": {
+   "defaultStore": {
+    "blobHost": "<YOUR_VALUE_HERE>",
+    "container": "<YOUR_VALUE_HERE>",
+    "keyVaultSasTokenSecretName": "<YOUR_VALUE_HERE>",
+    "sasToken": ""
+   },
+   "enabled": false,
+   "extraStores": [
+   ],
+   "fetchSasTokensFromKeyVault": false
+  }
+ },
+ "batch-job-runner": {
+  "activitiProcessDefinitionCacheLimit": 1024,
+  "asyncTaskScheduler": {
+   "threadPoolSize": 32
+  },
+  "autoRestart": false,
+  "bindHost": "localhost",
+  "cancelation": {
+   "enabled": true
+  },
+  "checkDatabaseConnectionOnStartup": {
+   "attemptDelayInMillis": 10000,
+   "enabled": true,
+   "maxAttempts": 5
+  },
+  "classpath": "%(topOfTree)s/services/batch-job-runner/build/install/batch-job-runner/batch-job-runner.jar:%(topOfTree)s/services/batch-job-runner/build/install/batch-job-runner/lib/*:%(topOfTree)s/conf/hadoop-site:/usr/lib/hdinsight-datalake/*:/usr/hdp/current/hadoop-client/client/*:/usr/hdp/current/hadoop-client/*:%(topOfTree)s/%(hadoopBundleJar)s",
+  "cleanup": {
+   "enabled": true
+  },
+  "database": {
+   "host": "localhost",
+   "mysqlServerTimezone": "",
+   "name": "trifacta-activiti",
+   "password": "trifactaactiviti",
+   "poolMaxSize": "20",
+   "port": "5432",
+   "type": "postgresql",
+   "username": "trifactaactiviti",
+   "verifyServerCertificate": "false"
+  },
+  "dataflowClassLoaderPrewarming": {
+   "enabled": false,
+   "waitTimeoutInSeconds": 600
+  },
+  "env": {
+   "LD_LIBRARY_PATH": "%(topOfTree)s/libs/java/joblaunch/fileconverter/tableausdk-linux64/lib64/tableausdk/"
+  },
+  "executor": {
+   "jobLockTimeInMinutes": 60
+  },
+  "historyLevel": "none",
+  "host": "localhost",
+  "jvmOptions": [
+   "-Dfile.encoding=UTF-8",
+   "-Xmx1024m",
+   "-XX:+UseConcMarkSweepGC",
+   "-XX:+UseParNewGC",
+   "-XX:NewRatio=3"
+  ],
+  "mainClass": "com.trifacta.batchjobrunner.BatchJobRunnerApp",
+  "mock": {
+   "dataFolder": "test-inputs/data/batch-job-runner",
+   "jobRuntimeInMinutes": 5
+  },
+  "port": 41920,
+  "profile": "live",
+  "signalIncompleteJobsOnStartup": true,
+  "systemProperties": {
+   "access.log.json": "false",
+   "access.log.path": "%(topOfTree)s/logs",
+   "blockingHttpClientTracingEnabled": "%(batch-job-runner.tracing.enabled)s",
+   "httpMaxConnectionsPerDestination": "50",
+   "httpMaxReqThreadPoolSize": "200",
+   "httpResponseBufferSizeInMB": "50",
+   "java.library.path": "%(topOfTree)s/services/batch-job-runner/build/libs/native:/opt/cloudera/parcels/CDH/lib/hadoop/lib/native:/usr/hdp/2.*/hadoop/lib/native",
+   "java.net.preferIPv4Stack": "true",
+   "java.security.egd": "file:/dev/./urandom",
+   "log4j.configurationFile": "log4j2.xml",
+   "logging.level": "info",
+   "logging.type": "regular",
+   "server.address": "%(batch-job-runner.bindHost)s",
+   "server.port": "%(batch-job-runner.port)s",
+   "spring.config.location": "file:%(topOfTree)s/services/batch-job-runner/build/conf/",
+   "spring.profiles.active": "%(batch-job-runner.profile)s"
+  },
+  "tracing": {
+   "collector": {
+    "host": "localhost",
+    "port": 9411
+   },
+   "enabled": false,
+   "sampler": {
+    "param": "true",
+    "type": "const"
+   }
+  }
+ },
+ "batchserver": {
+  "dataServiceTimeout": 86400000,
+  "polling": {
+   "jobProgressPollIntervalSeconds": 5,
+   "progressTimeoutSeconds": 172800,
+   "terminationWaitIntervalSeconds": 30
+  },
+  "spark": {
+   "progressTimeoutSeconds": 172800,
+   "requestRetryCount": 10,
+   "requestTimeoutMillis": 120000
+  },
+  "workers": {
+   "fileconverter": {
+    "max": 16
+   },
+   "filewriter": {
+    "hadoopConfig": {
+    },
+    "max": 16
+   },
+   "ingest": {
+    "bufferSizeBytes": 4096,
+    "max": 16
+   },
+   "jobHeartbeat": {
+    "frequencyInMs": 10000,
+    "jobHeartbeatDelayedThreshold": 10,
+    "jobWaitingMaxThreshold": 2880
+   },
+   "keepalive": 30000,
+   "photon": {
+    "max": 2,
+    "memoryMonitorEnabled": true,
+    "memoryPercentageThreshold": 50,
+    "timeoutEnabled": true,
+    "timeoutMinutes": 180
+   },
+   "profile": {
+    "max": 16
+   },
+   "publish": {
+    "max": 16
+   },
+   "spark": {
+    "max": 16
+   },
+   "wrangle": {
+    "max": 16
+   }
+  }
+ },
+ "captcha": {
+  "enabled": false,
+  "secretKey": "<secret_key>",
+  "siteKey": "<site_key>",
+  "validationUrl": "<CAPTCHA_VALIDATION_URL>"
+ },
+ "clouderaNavigator": {
+  "apiVersion": 9,
+  "baseURL": "<YOUR_VALUE_HERE>",
+  "customSources": {
+  },
+  "enabled": false,
+  "https": {
+   "enabled": false,
+   "trustStore": {
+    "location": "<YOUR_VALUE_HERE>",
+    "password": "<YOUR_VALUE_HERE>",
+    "type": "jks"
+   }
+  },
+  "namespace": "trifacta",
+  "password": "<YOUR_VALUE_HERE>",
+  "username": "<YOUR_VALUE_HERE>"
+ },
+ "configWatermark": "20190320-000",
+ "configuration-service": {
+  "autoRestart": false,
+  "classpath": "%(topOfTree)s/services/configuration-service/build/install/configuration-service/configuration-service.jar:%(topOfTree)s/services/configuration-service/build/install/configuration-service/lib/*",
+  "database": {
+   "host": "localhost",
+   "mysqlServerTimezone": "",
+   "name": "trifactaconfigurationservice",
+   "password": "trifactaconfigurationservice",
+   "poolMaxSize": "20",
+   "port": "5432",
+   "type": "POSTGRESQL",
+   "username": "trifactaconfigurationservice",
+   "verifyServerCertificate": "false"
+  },
+  "importOverride": "",
+  "mainClass": "com.trifacta.configuration_service.ConfigurationServiceApplication",
+  "proxyThroughNginx": false,
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "com.trifacta.configuration_service.schema": "%(topOfTree)s/conf/configuration-service.schema.json",
+   "com.trifacta.configuration_service.tracing.collector.host": "localhost",
+   "com.trifacta.configuration_service.tracing.collector.port": "9411",
+   "com.trifacta.configuration_service.tracing.enabled": "false",
+   "com.trifacta.configuration_service.tracing.sampler.param": "true",
+   "com.trifacta.configuration_service.tracing.sampler.type": "const",
+   "log4j.configurationFile": "log4j2.xml",
+   "logging.fileName": "logs/configuration-service.log",
+   "logging.level": "info",
+   "logging.type": "regular",
+   "server.address": "127.0.0.1",
+   "server.port": "10075",
+   "swagger.basePath": "/configuration-service"
+  }
+ },
+ "conversion-service": {
+  "autoRestart": false,
+  "classpath": "%(topOfTree)s/services/conversion-service/build/install/conversion-service/conversion-service.jar:%(topOfTree)s/services/conversion-service/build/install/conversion-service/lib/*",
+  "enabled": true,
+  "host": "localhost",
+  "mainClass": "com.trifacta.conversionservice.ConversionServiceApp",
+  "maxLockLifeMilliseconds": 3600000,
+  "maxTimeConversionJobRetriesMillis": 3600000,
+  "port": 41914,
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "logging.level": "info",
+   "server.port": "41914"
+  }
+ },
+ "data-service": {
+  "autoRestart": false,
+  "bindHost": "localhost",
+  "cacheOptions": {
+   "expirySeconds": 86400,
+   "maxSize": 100,
+   "validationDelayMilliseconds": 3600000
+  },
+  "classpath": "%(topOfTree)s/services/data-service/build/libs/data-service.jar:%(topOfTree)s/conf/data-service/:%(topOfTree)s/conf/hadoop-site:%(topOfTree)s/services/data-service/build/dependencies/*:/usr/hdp/current/hadoop-client/client/*:/usr/hdp/current/hadoop-client/*:/usr/hdp/current/hive-client/lib/*:%(topOfTree)s/%(hadoopBundleJar)s:%(topOfTree)s/%(data-service.hiveJdbcJar)s",
+  "enabled": true,
+  "hiveJdbcJar": "hadoop-deps/cdh-5.15/build/libs/cdh-5.15-hive-jdbc.jar",
+  "hiveManagedTableFormat": "PARQUET",
+  "host": "localhost",
+  "jvmOptions": [
+   "-Xmx512m",
+   "-Djavax.security.auth.useSubjectCredsOnly=false"
+  ],
+  "mainClass": "com.trifacta.dataservice.App",
+  "port": 41912,
+  "sqlOptions": {
+   "hiveReadStreamRecords": 100000000,
+   "initialReadStreamRecords": 25,
+   "limitedReadStreamRecords": 1000000,
+   "maxReadStreamRecords": -1,
+   "stringSizeInBytes": 256
+  },
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "blockingHttpClientTracingEnabled": "%(data-service.tracing.enabled)s",
+   "java.net.preferIPv4Stack": "true",
+   "logging.config": "classpath:logback.xml",
+   "logging.level": "info",
+   "server.address": "%(data-service.bindHost)s",
+   "server.port": "%(data-service.port)s"
+  },
+  "tracing": {
+   "collector": {
+    "host": "localhost",
+    "port": 9411
+   },
+   "enabled": false,
+   "sampler": {
+    "param": "true",
+    "type": "const"
+   }
+  },
+  "vendorPath": "%(topOfTree)s/services/data-service/build/conf/vendor"
+ },
+ "dataGenerator": {
+  "defaultDataGenDirectory": "/data-gen",
+  "hadoopStreamingJar": "/usr/lib/hadoop-mapreduce/hadoop-streaming.jar"
+ },
+ "databricks": {
+  "autoterminationMinutes": 60,
+  "clusterLogSyncPollerDelayInSeconds": 20,
+  "clusterLogSyncWaitTimeInMinutes": 15,
+  "clusterStartupWaitTimeInMinutes": 60,
+  "clusterStatePollerDelayInSeconds": 10,
+  "driverNodeType": "Standard_D3_v2",
+  "enableAutotermination": true,
+  "logsDestination": "/trifacta/logs",
+  "maxWorkers": 8,
+  "minWorkers": 1,
+  "serviceUrl": "https://westus2.azuredatabricks.net",
+  "sparkVersion": "4.3.x-scala2.11",
+  "workerNodeType": "Standard_D3_v2"
+ },
+ "datasourceCaching": {
+  "defaultForceCacheUpdate": true,
+  "maxSize": 107374182400,
+  "refreshThreshold": 168,
+  "staleConvertedSourceInHours": 1,
+  "useGlobalDatasourceCache": true
+ },
+ "deploymentManagement": {
+  "enabled": false
+ },
+ "deprecated": {
+  "aws": {
+   "emr": {
+    "resource": {
+     "bucket": "",
+     "path": ""
+    }
+   },
+   "redshift": {
+    "defaultDatabase": "<YOUR_VALUE_HERE>",
+    "extraLoadParams": "BLANKSASNULL EMPTYASNULL TRIMBLANKS TRUNCATECOLUMNS"
+   }
+  },
+  "hive": {
+   "server": {
+    "defaultDatabase": "default"
+   }
+  }
+ },
+ "derivesFrom": [
+  "%(topOfTree)s/conf/site-config.installer.server.base.json",
+  "%(topOfTree)s/conf/site-config.installer.server.ha.json",
+  "%(topOfTree)s/conf/site-config.database.postgres.json"
+ ],
+ "disabledInputFileEncodings": [
+  "UTF-32"
+ ],
+ "encryption": {
+  "keyFile": "%(topOfTree)s/conf/.key/customerKey"
+ },
+ "env": {
+  "JAVA_HOME": "/usr/lib/jvm/java-1.8.0-openjdk",
+  "PATH": "${HOME}/bin:$PATH:/usr/local/bin",
+  "PYTHON_HOME": "/opt/trifacta/pkg3p/python",
+  "TRIFACTA_CONF": "/opt/trifacta/conf"
+ },
+ "feature": {
+  "blacklist": {
+   "commaSeparatedEntries": "",
+   "enabled": false,
+   "redirectUrl": ""
+  },
+  "cachingService": {
+   "implementation": {
+    "js": "local"
+   },
+   "memcached": {
+    "connectionPoolSize": 20,
+    "connectionTimeoutInMs": 3000,
+    "failures": 3,
+    "retriesPerRequest": 3,
+    "serverList": [
+    ]
+   }
+  },
+  "cancelSampleEnabled": true,
+  "columnStandardization": {
+   "enabled": false
+  },
+  "connectionsInTopLevelSettings": true,
+  "dataManagement": {
+   "enabled": false
+  },
+  "enableAutoRandomSample": true,
+  "enableCLIDownload": true,
+  "enableCompression": {
+   "enabled": true
+  },
+  "enableConvertedDatasource": true,
+  "enableCustomTypes": true,
+  "enableDoubleMetaphone": true,
+  "enableEnterpriseAdminSettings": true,
+  "enableExternalLandingPage": false,
+  "enableFirstRowsSample": true,
+  "enableFlowNodeExport": false,
+  "enableJobDeletion": false,
+  "enableJobHeartbeat": true,
+  "enableLogDownload": true,
+  "enableOptionalNotes": true,
+  "enablePasswordCriteria": false,
+  "enableQGramsFunc": false,
+  "enableSamplingScanOptions": true,
+  "enableSingleFileInEngines": false,
+  "enableSnapshotExport": true,
+  "enableSparkRemoteJob": false,
+  "enableTrifactaAdminTools": false,
+  "enableUDFTransform": {
+   "enabled": false
+  },
+  "fileLineage": {
+   "enabled": true
+  },
+  "firefox": {
+   "enabled": false
+  },
+  "flowExportImportChecksum": {
+   "enabled": false,
+   "salt": "BroXfsYdxC9GKJ2oqXMxGNMe68Xiq4"
+  },
+  "flowSharing": {
+   "showUserListing": true
+  },
+  "folders": {
+   "enabled": true
+  },
+  "highAvailability": {
+   "enableRestartFromAdminUI": true,
+   "namenode": true,
+   "resourceManager": false,
+   "separateLogFilesByName": false
+  },
+  "jdbcIngestionCaching": {
+   "enabled": true
+  },
+  "jobResultColumnDetails": {
+   "enabled": false
+  },
+  "jobsDateFiltering": true,
+  "jobsTypeFiltering": true,
+  "localFileStorage": {
+   "allowedPrefixes": [
+   ]
+  },
+  "logProtobufEventsToDB": {
+   "enabled": false
+  },
+  "mapTaskToVerbProbabilities": {
+   "enabled": true
+  },
+  "mlTransformSuggestions": {
+   "delayThreshold": 80,
+   "enabled": true
+  },
+  "multipleWASBContainers": {
+   "enabled": true
+  },
+  "parameterization": {
+   "allowMultipleDateTimeVariables": false,
+   "apiMatchingLimit": 50,
+   "enableOverridesWhenSampling": true,
+   "enableSourceRowOrdering": true,
+   "matchLimitOnSampling": {
+    "databricksSpark": 0,
+    "dataflow": 0,
+    "emrSpark": 0,
+    "photon": 50,
+    "spark": 0
+   },
+   "matchingAreaSlowSearchNotificationTimeoutInMs": 10000,
+   "maxNumberOfFilesForExecution": {
+    "databricksSpark": 0,
+    "dataflow": 0,
+    "emrSpark": 0,
+    "photon": 500,
+    "spark": 0
+   },
+   "memoryLimitForDateRangeInMb": 10,
+   "regexGenerationBatchSize": 50,
+   "showParameterizationTipInFlowView": true
+  },
+  "patternStandardizationSuggestions": {
+   "enabled": true
+  },
+  "persistentSuffixCounters": {
+   "enabled": true
+  },
+  "photonColSketch": {
+   "enabled": true
+  },
+  "pigOutputFileCompatibility": true,
+  "publishDelimiterQuoteOption": {
+   "enableUnicodeCSVDelimiters": false,
+   "enabled": true
+  },
+  "scheduling": {
+   "protobufDefinitionsFolder": "%(topOfTree)s/services/scheduling-service/protobuf/build/install/scheduling-service/api",
+   "schedulingImprovements": false
+  },
+  "selectionModel": {
+   "enabled": true
+  },
+  "showAWSDefaultBucket": true,
+  "showAWSTemporaryCredentialProviderOption": true,
+  "showHiveStagingDB": false,
+  "showRunningEnvironment": true,
+  "skipFilesystemPermissionCheck": false,
+  "targetMatching": {
+   "enabled": true,
+   "globalFuzzyMatching": false,
+   "standardizationSuggestions": false,
+   "useFuzzyMatching": false
+  },
+  "test_only_skipUserInvitations": false,
+  "textInput": {
+   "enabled": false
+  },
+  "topLevelSettings": {
+   "enabled": true
+  },
+  "trifactaToS": {
+   "enabled": true,
+   "introductionText": "",
+   "location": "/terms"
+  },
+  "uploadLicenseFromErrorPage": true,
+  "whitelist": {
+   "commaSeparatedEntries": "",
+   "enabled": false,
+   "redirectUrl": ""
+  },
+  "wipeout": {
+   "daysToEnablePurge": 14,
+   "person": {
+    "enabled": false
+   },
+   "workspace": {
+    "enabled": false
+   }
+  },
+  "wipeoutPubSub": {
+   "enabled": false,
+   "googleProject": "",
+   "pullSubscriptionName": "",
+   "pushSubscriptionName": "",
+   "secretToken": ""
+  },
+  "workspaceManagement": {
+   "enabled": false,
+   "oneWorkspacePerPerson": true
+  }
+ },
+ "google": {
+  "addTestingBuckets": false,
+  "additionalCliArgs": "",
+  "bigQuery": {
+   "browseUrlTemplate": ""
+  },
+  "clientProperties": {
+   "backToGcpProjectUrl": "",
+   "clientId": "",
+   "redirectUri": "",
+   "revokeProjectAccessUrl": "",
+   "scope": ""
+  },
+  "cloudStorage": {
+   "browseUrlTemplate": "",
+   "downloadUrlTemplate": ""
+  },
+  "cronDocumentationLink": "#",
+  "dataprepPrivateBetaSignUpUrl": "",
+  "documentationLink": "#",
+  "encryptedCommunication": {
+   "enable": true,
+   "keys": {
+    "fromGoogleDecryptionKey": ""
+   }
+  },
+  "gcsTest": {
+   "bucketName": "",
+   "bucketNameOnlyFiles": "",
+   "clientId": "",
+   "clientSecret": "",
+   "enableGcsMock": true,
+   "projectId": "",
+   "refreshToken": ""
+  },
+  "implementation": "live",
+  "maxFilesPerVfsRequest": 10000,
+  "maxFilesPerVfsStream": 100,
+  "privacyPolicyLink": "#",
+  "runInCloud": false,
+  "termsOfServiceLink": "#",
+  "tos": {
+   "baseUrl": "",
+   "enable": false,
+   "mock": false,
+   "mockPrivateKey": "",
+   "publicKey": "",
+   "subIdEncryptionKey": ""
+  },
+  "tutorialLink": "#",
+  "typeInferenceDocumentationLink": "#"
+ },
+ "hadoopBundleJar": "hadoop-deps/cdh-5.15/build/libs/cdh-5.15-bundle.jar",
+ "hadoopDefaultClusterCompression": {
+  "compression": "none",
+  "enabled": false
+ },
+ "hadoopImpersonation": false,
+ "hdfs": {
+  "enabled": true,
+  "highAvailability": {
+   "namenodes": {
+    "nn1": {
+     "host": "ip-10-8-64-196.pvt.su150.cazena.com",
+     "port": 8020
+    },
+    "nn2": {
+     "host": "ip-10-8-64-197.pvt.su150.cazena.com",
+     "port": 8020
+    }
+   },
+   "serviceName": "nameservice"
+  },
+  "namenode": {
+   "host": "ip-10-8-64-196.pvt.su150.cazena.com",
+   "port": 50470
+  },
+  "numSimultaneousConnections": 20,
+  "pathsConfig": {
+   "batchResults": "/trifacta/queryResults",
+   "dictionaries": "/trifacta/dictionaries",
+   "fileUpload": "/trifacta/uploads",
+   "globalDatasourceCache": "/trifacta/.datasourceCache",
+   "libraries": "/trifacta/libraries",
+   "sparkEventLogs": "/trifacta/sparkeventlogs",
+   "subdir": "",
+   "tempFiles": "/trifacta/tempfiles",
+   "userDir": ""
+  },
+  "permissions": {
+   "systemUmask": "027",
+   "userUmask": "027"
+  },
+  "protocolOverride": "",
+  "username": "trifacta",
+  "vfs": {
+   "exponentialBackoff": {
+    "initialRetryIntervalInMs": 100,
+    "maxRetryCount": 5
+   }
+  },
+  "webhdfs": {
+   "credentials": {
+    "password": "",
+    "username": "trifacta"
+   },
+   "host": "ip-10-8-64-196.pvt.su150.cazena.com",
+   "httpfs": false,
+   "maprCompatibilityMode": false,
+   "port": 50470,
+   "proxy": {
+    "enabled": false,
+    "host": "proxy",
+    "port": 8080
+   },
+   "ssl": {
+    "certificatePath": "<YOUR_PATH_HERE>",
+    "certificateValidationRequired": false,
+    "enabled": true
+   },
+   "version": "/webhdfs/v1"
+  }
+ },
+ "hostNameSelection": {
+  "enabled": false,
+  "hostUrls": [
+  ]
+ },
+ "inputFileEncoding": "UTF-8",
+ "job-service": {
+  "autoRestart": false,
+  "classpath": "%(topOfTree)s/services/job-service/build/install/job-service/job-service.jar:%(topOfTree)s/services/job-service/build/install/job-service/lib/*:%(topOfTree)s/%(hadoopBundleJar)s",
+  "database": {
+   "host": "localhost",
+   "mysqlServerTimezone": "",
+   "name": "trifactajobservice",
+   "password": "trifactajobservice",
+   "poolMaxSize": "20",
+   "port": "5432",
+   "type": "POSTGRESQL",
+   "username": "trifactajobservice",
+   "verifyServerCertificate": "false"
+  },
+  "enabled": false,
+  "host": "127.0.0.1",
+  "mainClass": "com.trifacta.job_service.JobServiceApplication",
+  "port": 20075,
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "blockingHttpClientTracingEnabled": "%(batch-job-runner.tracing.enabled)s",
+   "com.trifacta.job_service.tracing.collector.host": "localhost",
+   "com.trifacta.job_service.tracing.collector.port": "9411",
+   "com.trifacta.job_service.tracing.enabled": "false",
+   "com.trifacta.job_service.tracing.sampler.param": "true",
+   "com.trifacta.job_service.tracing.sampler.type": "const",
+   "frontEndThreadPool.nThreads": "50",
+   "httpMaxConnectionsPerDestination": "50",
+   "httpMaxReqThreadPoolSize": "200",
+   "httpResponseBufferSizeInMB": "50",
+   "localJobsThreadPool.nThreads": "50",
+   "log4j.configurationFile": "log4j2.xml",
+   "logging.fileName": "logs/job-service.log",
+   "logging.level": "info",
+   "logging.type": "regular",
+   "scheduledThreadPool.nThreads": "50",
+   "server.host": "127.0.0.1",
+   "server.port": "20075",
+   "spring.profiles.active": "live"
+  }
+ },
+ "jobMetadataStore": {
+  "connectTimeoutMilliseconds": 30000,
+  "host": "localhost",
+  "maxElapsedRetryTimeMilliseconds": 180000,
+  "port": 3006
+ },
+ "joinInference": {
+  "cardinalityThreshold": "0.33",
+  "classifierName": "join-inference"
+ },
+ "jsdata": {
+  "enableNewTypeCasting": true,
+  "loggerOptions": {
+   "json": false,
+   "level": "info",
+   "silent": false
+  },
+  "remoteTransformTimeoutMilliseconds": 180000,
+  "wrangleLanguage": {
+   "packages": {
+    "mlTasks": true
+   }
+  }
+ },
+ "kerberos": {
+  "delegationTokenRefreshInterval": 1800,
+  "enabled": true,
+  "kdc": "ipa.pvt.su150.cazena.com",
+  "keytab": "/opt/trifacta/conf/trifacta.keytab",
+  "principal": "trifacta",
+  "principals": {
+   "namenode": "hdfs/_HOST@CAZENA.INTERNAL",
+   "resourcemanager": "yarn/_HOST@CAZENA.INTERNAL"
+  },
+  "realm": "CAZENA.INTERNAL"
+ },
+ "license": {
+  "location": "/license/license.json",
+  "pollTimeMillis": 3600000
+ },
+ "logging": {
+  "piiMask": {
+   "enabled": false,
+   "salt": "this is a grain of salt"
+  }
+ },
+ "metadata": {
+  "edition": "Enterprise",
+  "environment": "prod"
+ },
+ "ml-service": {
+  "acceptedExternalHosts": [
+   "localhost"
+  ],
+  "autoRestart": true,
+  "bindHost": "127.0.0.1",
+  "host": "127.0.0.1",
+  "loggerOptions": {
+   "json": false
+  },
+  "port": 5000,
+  "threadPoolSize": {
+   "patternProfiler": 2
+  },
+  "websocketCrossOriginChecks": false
+ },
+ "photon": {
+  "cacheEnabled": true,
+  "distroPath": "/photon/dist/centos6/photon",
+  "enabled": true,
+  "extraCliArgs": "",
+  "mode": "wasm",
+  "numThreads": 4,
+  "runProfileWithSpark": false,
+  "traceExecution": false,
+  "websocket": {
+   "host": "localhost",
+   "port": 8082
+  }
+ },
+ "profiler": {
+  "userOption": true
+ },
+ "proxy": {
+  "autoRestart": true,
+  "importCustomConfig": false,
+  "loggerOptions": {
+   "json": false
+  },
+  "maintenanceMode": false,
+  "port": 3005,
+  "proxyStaticWebappFiles": false,
+  "redirectToHttps": false,
+  "redirectedPort": 41980,
+  "securityHeaders": {
+   "enabled": true,
+   "httpsHeaders": false
+  },
+  "serveStaticWebappFiles": true,
+  "staticBackend": "127.0.0.1:3016",
+  "user": "nginx"
+ },
+ "python": {
+  "python2Home": "pkg3p/python"
+ },
+ "quotas": {
+  "approachingThreshold": 0.8
+ },
+ "scheduling-service": {
+  "autoRestart": false,
+  "classpath": "%(topOfTree)s/services/scheduling-service/server/build/install/scheduling-service/scheduling-service.jar:%(topOfTree)s/services/scheduling-service/server/build/install/scheduling-service/lib/*",
+  "database": {
+   "host": "localhost",
+   "mysqlServerTimezone": "",
+   "name": "trifactaschedulingservice",
+   "password": "trifactaschedulingservice",
+   "poolMaxSize": "20",
+   "port": "5432",
+   "type": "POSTGRESQL",
+   "username": "trifactaschedulingservice",
+   "verifyServerCertificate": "false"
+  },
+  "enabled": true,
+  "host": "localhost",
+  "mainClass": "com.trifacta.scheduling_service.SchedulingServiceApplication",
+  "port": 43143,
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "com.trifacta.scheduling_service.cache_warming.enabled": "false",
+   "com.trifacta.scheduling_service.cache_warming.lower_bound_time_in_ms": "0",
+   "com.trifacta.scheduling_service.cache_warming.upper_bound_time_in_ms": "2700000",
+   "com.trifacta.scheduling_service.max_job_queue_size": "100",
+   "com.trifacta.scheduling_service.server.host": "127.0.0.1",
+   "com.trifacta.scheduling_service.server.port": "43143",
+   "com.trifacta.scheduling_service.time_based_trigger_service.host": "localhost",
+   "com.trifacta.scheduling_service.time_based_trigger_service.port": "43033",
+   "com.trifacta.scheduling_service.timeout_deferred_request": "480000",
+   "com.trifacta.scheduling_service.topOfTree": "%(topOfTree)s",
+   "com.trifacta.scheduling_service.tracing.collector.host": "localhost",
+   "com.trifacta.scheduling_service.tracing.collector.port": "9411",
+   "com.trifacta.scheduling_service.tracing.enabled": "false",
+   "com.trifacta.scheduling_service.tracing.sampler.param": "true",
+   "com.trifacta.scheduling_service.tracing.sampler.type": "const",
+   "com.trifacta.scheduling_service.webapp.call_pool_size": "10",
+   "com.trifacta.scheduling_service.webapp.host": "localhost",
+   "com.trifacta.scheduling_service.webapp.port": "3006",
+   "log4j.configurationFile": "log4j2.xml",
+   "logging.fileName": "logs/scheduling-service.log",
+   "logging.level": "info",
+   "logging.type": "regular"
+  }
+ },
+ "secure-token-service": {
+  "autoRestart": false,
+  "baseUri": "http://localhost:8090/v1/",
+  "classpath": "%(topOfTree)s/services/secure-token-service/server/build/install/secure-token-service/secure-token-service.jar:%(topOfTree)s/services/secure-token-service/server/build/install/secure-token-service/lib/*",
+  "host": "localhost",
+  "implementation": "live",
+  "mainClass": "com.trifacta.services.secure_token_service.SecureTokenService",
+  "port": 8090,
+  "secureTokenServiceClientTracingEnabled": false,
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "com.trifacta.services.secure_token_service.client_id": "",
+   "com.trifacta.services.secure_token_service.client_secret": "",
+   "com.trifacta.services.secure_token_service.database_host": "localhost",
+   "com.trifacta.services.secure_token_service.database_mysqlServerTimezone": "",
+   "com.trifacta.services.secure_token_service.database_name": "securetokenservice",
+   "com.trifacta.services.secure_token_service.database_password": "securetokenservice",
+   "com.trifacta.services.secure_token_service.database_port": "5432",
+   "com.trifacta.services.secure_token_service.database_type": "postgresql",
+   "com.trifacta.services.secure_token_service.database_user": "securetokenservice",
+   "com.trifacta.services.secure_token_service.enableServiceAccounts": "false",
+   "com.trifacta.services.secure_token_service.redirect_uri": "",
+   "com.trifacta.services.secure_token_service.refresh_token_encryption_key": "1pXPPjD06rOtaXVsck6DBQ==",
+   "com.trifacta.services.secure_token_service.serviceAccounts.applicationName": "%(webapp.applicationName)s",
+   "com.trifacta.services.secure_token_service.serviceAccounts.iamServiceAccountKey": "",
+   "com.trifacta.services.secure_token_service.serviceAccounts.namePattern": "",
+   "com.trifacta.services.secure_token_service.topOfTree": "%(topOfTree)s",
+   "com.trifacta.services.secure_token_service.tracing.collector.host": "localhost",
+   "com.trifacta.services.secure_token_service.tracing.collector.port": "9411",
+   "com.trifacta.services.secure_token_service.tracing.enabled": "true",
+   "com.trifacta.services.secure_token_service.tracing.sampler.param": "true",
+   "com.trifacta.services.secure_token_service.tracing.sampler.type": "const",
+   "com.trifacta.services.secure_token_service.user_id_salt": "",
+   "log4j.configurationFile": "log4j2.xml",
+   "logging.fileName": "logs/secure-token-service.log",
+   "logging.level": "info",
+   "logging.type": "regular",
+   "server.port": "%(secure-token-service.port)s",
+   "spring.autoconfigure.exclude": "org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration",
+   "spring.profiles.active": "azure"
+  },
+  "userIdHashingPepper": "VHJpZmFjdGFVc2VySWRIYXNoaW5nUGVwcGVy"
+ },
+ "sharedSecret": "cf08aa75e11a5d93d349abf5c8ae6d7030263164599b42a78702197778be6fc0",
+ "smtp": {
+  "enableSSL": true,
+  "host": "<SMTP_HOST>",
+  "password": "<SMTP_PASS>",
+  "port": 587,
+  "username": "<SMTP_USER>"
+ },
+ "spark": {
+  "hadoopUser": "trifacta",
+  "home": "<YOUR_VALUE_HERE>",
+  "launchProps": {
+  },
+  "master": "local[1]",
+  "props": {
+   "spark.app.debug.enable": "false",
+   "spark.checkpoint.compress": "true",
+   "spark.driver.extraJavaOptions": "-XX:MaxPermSize=1024m -XX:PermSize=256m",
+   "spark.driver.memory": "2GB",
+   "spark.dynamicAllocation.enabled": "true",
+   "spark.executor.cores": "2",
+   "spark.executor.memory": "6GB",
+   "spark.hadoop.avro.mapred.ignore.inputs.without.extension": "true",
+   "spark.shuffle.service.enabled": "true",
+   "spark.sql.broadcastTimeout": "300",
+   "spark.sql.conf.autoBroadcastJoinThreshold": "100000000",
+   "spark.sql.shuffle.partitions": "200",
+   "spark.yarn.am.extraJavaOptions": "",
+   "spark.yarn.queue": "default",
+   "transformer.cache.reused.sources": "true",
+   "transformer.dataframe.checkpoint.threshold": "500",
+   "transformer.maxDataframeFilterSubExprCount": "100",
+   "transformer.plan.log": "false"
+  },
+  "useVendorSparkLibraries": false,
+  "userPropsDirectory": "",
+  "version": "2.3.0"
+ },
+ "spark-job-service": {
+  "autoRestart": false,
+  "classpath": "%(topOfTree)s/services/spark-job-server/server/build/libs/spark-job-server-bundle.jar:%(topOfTree)s/conf/hadoop-site/:/usr/lib/hdinsight-datalake/*:%(topOfTree)s/%(sparkBundleJar)s:%(topOfTree)s/%(hadoopBundleJar)s",
+  "disableHDFSAccess": false,
+  "enableHistoryServer": false,
+  "enableHiveSupport": true,
+  "enableSiteConfigCheck": true,
+  "enabled": true,
+  "env": {
+   "HADOOP_CONF_DIR": "%(topOfTree)s/conf/hadoop-site/",
+   "HADOOP_USER_NAME": "trifacta",
+   "MAPR_IMPERSONATION_ENABLED": "0",
+   "MAPR_TICKETFILE_LOCATION": "<MAPR_TICKETFILE_LOCATION>",
+   "SPARK_DIST_CLASSPATH": "",
+   "SPARK_JOB_SERVICE_PORT": "4007"
+  },
+  "hiveDependenciesLocation": "%(topOfTree)s/hadoop-deps/cdh-5.15/build/libs",
+  "jvmOptions": [
+   "-Xmx128m"
+  ],
+  "kdcLoginPerJob": false,
+  "mainClass": "com.trifacta.jobserver.SparkJobServer",
+  "optimizeLocalization": true,
+  "sparkImpersonationOn": false,
+  "systemProperties": {
+   "SPARK_YARN_MODE": "true",
+   "access.log.path": "%(topOfTree)s/logs",
+   "java.net.preferIPv4Stack": "true"
+  },
+  "useHiveWarehouseConnector": false
+ },
+ "sparkBundleJar": "services/spark-job-server/build/bundle/spark%(spark.version)s/*",
+ "supervisord": {
+  "rpc": {
+   "bindHost": "localhost",
+   "host": "localhost",
+   "loglevel": "info",
+   "path": "/RPC2",
+   "port": 4421
+  }
+ },
+ "telemetry": {
+  "amplitude": {
+   "client": {
+    "enabled": false,
+    "writeKey": "<YOUR_VAUE_HERE>"
+   }
+  },
+  "piiMasking": {
+   "enabled": true
+  },
+  "sentry": {
+   "client": {
+    "dsn": "<YOUR_VALUE_HERE>",
+    "enabled": false,
+    "loglevel": "error"
+   },
+   "onPrem": {
+    "enabled": false
+   },
+   "server": {
+    "dsn": "<YOUR_VALUE_HERE>",
+    "enabled": false
+   }
+  }
+ },
+ "termsOfService": {
+  "version": 1
+ },
+ "testFramework": {
+  "loggerOptions": {
+   "json": false,
+   "level": "info",
+   "silent": false
+  }
+ },
+ "time-based-trigger-service": {
+  "autoRestart": false,
+  "classpath": "%(topOfTree)s/services/time-based-trigger-service/server/build/install/time-based-trigger-service/time-based-trigger-service.jar:%(topOfTree)s/services/time-based-trigger-service/server/build/install/time-based-trigger-service/lib/*",
+  "database": {
+   "host": "localhost",
+   "mysqlServerTimezone": "",
+   "name": "trifactatimebasedtriggerservice",
+   "password": "trifactatimebasedtriggerservice",
+   "poolMaxSize": "20",
+   "port": "5432",
+   "type": "POSTGRESQL",
+   "username": "trifactatimebasedtriggerservice",
+   "verifyServerCertificate": "false"
+  },
+  "mainClass": "com.trifacta.timebasedtriggerservice.TimeBasedTriggerServiceApplication",
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "com.trifacta.timebasedtriggerservice.backOffTime": "10000",
+   "com.trifacta.timebasedtriggerservice.maxTriggerDelayInMs": "-1",
+   "com.trifacta.timebasedtriggerservice.quartz.scheduler.batchTriggerAcquisitionFireAheadTimeWindow": "5000",
+   "com.trifacta.timebasedtriggerservice.quartz.scheduler.batchTriggerAcquisitionMaxCount": "2",
+   "com.trifacta.timebasedtriggerservice.quartz.scheduler.dbFailureRetryInterval": "15000",
+   "com.trifacta.timebasedtriggerservice.quartz.scheduler.idleWaitTime": "30000",
+   "com.trifacta.timebasedtriggerservice.quartz.threadPool.threadCount": "5",
+   "com.trifacta.timebasedtriggerservice.quartz.threadPool.threadPriority": "5",
+   "com.trifacta.timebasedtriggerservice.rescheduledTriggerInterval": "300000",
+   "com.trifacta.timebasedtriggerservice.timeout": "600000",
+   "com.trifacta.timebasedtriggerservice.topOfTree": "%(topOfTree)s",
+   "com.trifacta.timebasedtriggerservice.tracing.collector.host": "localhost",
+   "com.trifacta.timebasedtriggerservice.tracing.collector.port": "9411",
+   "com.trifacta.timebasedtriggerservice.tracing.enabled": "false",
+   "com.trifacta.timebasedtriggerservice.tracing.sampler.param": "true",
+   "com.trifacta.timebasedtriggerservice.tracing.sampler.type": "const",
+   "log4j.configurationFile": "log4j2.xml",
+   "log4j.shutdownHook": "disable",
+   "logging.fileName": "logs/time-based-trigger-service.log",
+   "logging.level": "info",
+   "logging.type": "regular",
+   "server.address": "127.0.0.1",
+   "server.port": "43033"
+  }
+ },
+ "topOfTree": "/opt/trifacta",
+ "typeSystem": {
+  "JsLexiconCheckBloomFilterBitRatio": 15,
+  "JsLexiconCheckBloomFilterNumHashFuncs": 10,
+  "JsLexiconCheckBloomFilterSizeCeil": 4096000,
+  "JsLexiconCheckBloomFilterSizeFloor": 81920,
+  "defaultProbability": 1e-15,
+  "logProbPruningDelta": 100,
+  "pruneIters": 10
+ },
+ "udf-service": {
+  "additionalJars": [
+  ],
+  "autoRestart": true,
+  "bindHost": "localhost",
+  "classpath": "%(topOfTree)s/services/udf-service/build/libs/udf-service.jar:%(topOfTree)s/services/udf-service/build/dependencies/*",
+  "host": "127.0.0.1",
+  "inFlightRequestLimit": 10,
+  "jvmOptions": [
+  ],
+  "mainClass": "com.trifacta.udfservice.App",
+  "outputBufferSize": 1048576,
+  "port": 3008,
+  "systemProperties": {
+   "access.log.path": "%(topOfTree)s/logs",
+   "server.address": "%(udf-service.bindHost)s"
+  },
+  "udfBatchSize": 100,
+  "udfCommunicationTimeout": 3000,
+  "udfPackages": [
+  ]
+ },
+ "vfs-service": {
+  "autoRestart": true,
+  "bindHost": "127.0.0.1",
+  "enabled": true,
+  "host": "127.0.0.1",
+  "loggerOptions": {
+   "format": ":date[iso] :method :url :status :res[content-length] :response-time :referrer :remote-addr :trifacta-user :user-agent",
+   "json": false,
+   "level": "info",
+   "silent": false
+  },
+  "numProcesses": 2,
+  "port": 41913,
+  "timeoutMilliseconds": 7200000,
+  "tracing": {
+   "collectorEndpoint": "http://127.0.01:9411/api/v2/spans",
+   "enabled": false,
+   "sampler": {
+    "param": 1,
+    "type": "const"
+   }
+  }
+ },
+ "waterline": {
+  "catalogHost": "<YOUR_VALUE_HERE>",
+  "enabled": false,
+  "searchPath": "/search?q="
+ },
+ "webapp": {
+  "TDEGenerationTimeoutInSecs": 30,
+  "ajaxRetries": {
+   "enable": true,
+   "minTimeoutInMillis": 250,
+   "retries": 2
+  },
+  "analytics": {
+   "enabledChannels": [
+    "Log"
+   ],
+   "segmentWriteKey": "<YOUR_VAUE_HERE>"
+  },
+  "applicationName": "Trifacta",
+  "assetLocation": {
+   "urlPrefix": "",
+   "useExternalServer": false
+  },
+  "autoRestart": true,
+  "avroDefaultRecordName": "GenericTrifactaRecord",
+  "bindHost": "127.0.0.1",
+  "bodyParser": {
+   "json": {
+    "limit": "10mb"
+   },
+   "urlEncoded": {
+    "limit": "10mb"
+   }
+  },
+  "client": {
+   "allowedFileExtensions": [
+    ".txt",
+    ".TXT",
+    ".csv",
+    ".CSV",
+    ".json",
+    ".JSON",
+    ".log",
+    ".LOG",
+    ".gz",
+    ".GZ",
+    ".tsv",
+    ".TSV",
+    ".avro",
+    ".AVRO",
+    ".xml",
+    ".XML",
+    ".xls",
+    ".XLS",
+    ".xlsx",
+    ".XLSX",
+    ".bz2",
+    ".BZ2",
+    ".sz",
+    ".SZ",
+    ".snappy",
+    ".SNAPPY",
+    ".pqt",
+    ".PQT",
+    ".parquet",
+    ".PARQUET"
+   ],
+   "enableConcatenateUploads": false,
+   "enableUserEventLogging": true,
+   "eventLoggingFeatureFlags": [
+   ],
+   "googleProjects": {
+    "pageSize": 50,
+    "searchDebounceTime": 300
+   },
+   "healthChecker": {
+    "enableHeartBeatMode": false,
+    "enableInterceptorMode": false,
+    "heartBeatInterval": 15000,
+    "maxNumberOfRetries": 5,
+    "retryInterval": 200
+   },
+   "joinPreviewLimit": 512000,
+   "loadLimit": 10485760,
+   "maxExecutionBytes": {
+    "dataflow": 0,
+    "photon": 1000000000,
+    "spark": 0
+   },
+   "maxFileUploadSize": 1073741824,
+   "maxResultsBytes": 41943040,
+   "notificationBanner": {
+    "body": "",
+    "enabled": false,
+    "priority": 4,
+    "title": ""
+   },
+   "previewLoadLimit": 128000,
+   "sampleOutputTuplesPerJoinKey": 3,
+   "showMaxFileUploadMessage": false,
+   "timing": false,
+   "traceAutoComplete": false,
+   "traceEdits": false,
+   "traceUITransactions": false,
+   "unionLoadLimit": 256000
+  },
+  "connectivity": {
+   "connectionTestTimeout": 15000,
+   "customSQLQuery": {
+    "enableMultiStatement": false,
+    "enabled": true
+   },
+   "disableRelationalTypeInference": false,
+   "ingest": {
+    "enabled": true
+   },
+   "kerberosDelegateConfigPath": "",
+   "krb5Path": "/etc/krb5.conf",
+   "longLoadTimeoutMillis": 120000,
+   "metadataReadTimeoutMillis": 120000,
+   "nonAdminManagementEnabled": true,
+   "publishInfoTimeoutMillis": 3000,
+   "relationalWriteback": {
+    "enabled": true
+   }
+  },
+  "dataManagement": {
+   "quotaPollIntervalInMillis": 30000
+  },
+  "database": {
+   "host": "localhost",
+   "logging": false,
+   "name": "trifacta",
+   "password": "trifacta",
+   "pool": {
+    "maxConnections": 10,
+    "maxIdleTimeInMillis": 30000
+   },
+   "port": 5432,
+   "type": "postgresql",
+   "username": "trifacta"
+  },
+  "debug": false,
+  "defaultHadoopFileFormat": "csv",
+  "defaultLanguage": "en",
+  "directGoogleAnalytics": {
+   "enabled": false,
+   "trackingID": "<GA_TRACKING_ID>"
+  },
+  "disableBzip2": false,
+  "emailSender": "admin@trifacta.com",
+  "emailSenderName": "Trifacta Wrangler",
+  "emailTokenExpiryInMinutes": 1440,
+  "emailTokenLength": 10,
+  "enableAnalytics": false,
+  "enableAppcues": false,
+  "enableChatSupport": false,
+  "enableColumnLineageScriptHighlighting": true,
+  "enableCredentialsSharing": true,
+  "enableFeedback": true,
+  "enableGoogleAuth": false,
+  "enableOnlineTraining": true,
+  "enableParameterHistory": true,
+  "enablePatternProfiling": true,
+  "enableProfilePicture": false,
+  "enableRegistrationWhitelisting": false,
+  "enableStructureDetection": true,
+  "enableTricheckUI": true,
+  "enableTypecastOutput": true,
+  "enabledSemanticTypes": [
+   "Datetime",
+   "Ipaddress",
+   "Emailaddress",
+   "Url",
+   "Phone",
+   "Creditcard",
+   "SSN",
+   "Bool",
+   "Gender",
+   "State",
+   "Httpcodes",
+   "Zipcode"
+  ],
+  "freeUserHostUrl": "",
+  "host": "127.0.0.1",
+  "impalaDatetimeOutput": false,
+  "initialSample": {
+   "inProgressThresholdInMins": 15,
+   "maxDurationInMs": 1000,
+   "pollingIntervalInMs": 4000,
+   "relativePath": ".trifacta"
+  },
+  "ldap": {
+   "enabled": false,
+   "mapping": {
+    "email": "mail",
+    "hadoopPrincipal": "uid",
+    "name": "cn",
+    "ssoPrincipal": "uid"
+   },
+   "server": {
+    "bindCredentials": "",
+    "bindDN": "",
+    "internalCACertificatePath": "",
+    "searchAttributes": [
+     "uid",
+     "mail",
+     "cn"
+    ],
+    "searchBase": "",
+    "searchFilter": "(uid={{username}})",
+    "url": ""
+   }
+  },
+  "loadLimitForSplitInference": 20000,
+  "loadLimitForTypeInference": 524288,
+  "loggerOptions": {
+   "format": ":date[iso] :method :url :status :res[content-length] :response-time :referrer :remote-addr :trifacta-user :user-agent",
+   "json": false,
+   "level": "info",
+   "silent": false
+  },
+  "maxQueryResultsSize": 1073741824,
+  "maxRecordLength": 1048576,
+  "maxResultSizeForTDEDownloadInMB": 40,
+  "minChromeVersion": 58,
+  "minimumPhoneNumberLength": 8,
+  "numProcesses": 2,
+  "outputCsvDelimiter": ",",
+  "passwordCriteria": {
+   "contains": {
+    "digits": "undefined",
+    "letters": "undefined",
+    "lowercase": "undefined",
+    "spaces": "undefined",
+    "symbols": "undefined",
+    "uppercase": "undefined"
+   },
+   "description": "",
+   "length": {
+    "max": 100,
+    "min": 0
+   }
+  },
+  "polling": {
+   "jobStatusInMillis": 5000
+  },
+  "port": 3006,
+  "protocol": "http",
+  "requestRetries": {
+   "minTimeoutInMillis": 250,
+   "retries": 2
+  },
+  "runInDatabricks": false,
+  "runInDataflow": false,
+  "runInEMR": false,
+  "runInHadoop": true,
+  "runInTrifactaServer": true,
+  "saml": {
+   "enabled": false,
+   "idpMetaDataPath": "/opt/trifacta/conf/idp-metadata.xml",
+   "mapping": {
+    "email": "mail",
+    "hadoopPrincipal": "userPrincipalName",
+    "name": "name",
+    "ssoPrincipal": "userPrincipalName"
+   },
+   "security": {
+    "decryptionCertPath": "/opt/trifacta/conf/.key/saml-decryption-public-key.cert",
+    "decryptionPvkPath": "/opt/trifacta/conf/.key/saml-decryption-private-key.key",
+    "privateCertPath": "/opt/trifacta/conf/.key/saml-signing-private-key.key",
+    "signingCertPath": "/opt/trifacta/conf/.key/saml-signing-public-key.cert"
+   },
+   "server": {
+    "callbackUrl": "http://<hostname>/saml/login/callback?redirect_to=/",
+    "entityId": "http://<hostname>.com",
+    "logoutCallbackUrl": "http://<hostname>/saml/logout/callback"
+   }
+  },
+  "sampleLoadLimit": 1073741824,
+  "selfMonitoring": {
+   "enabled": false,
+   "intervalInMs": 5000
+  },
+  "selfRegistration": true,
+  "session": {
+   "cookieSecureFlag": false,
+   "refreshEmbeddedExpiryDateAfterMinutes": 5
+  },
+  "slaaskChannels": {
+   "enterpriseSupport": "a68bba04cb5cf6a24fbb8f5a45705329",
+   "saasSupport": "b093543a4a8bf6a971bc69bc1a5d04da",
+   "sales": "7f05728cb532265f41dfb091461b85f3"
+  },
+  "sso": {
+   "disableAuthGateway": false,
+   "enable": false,
+   "enableAutoRegistration": true
+  },
+  "storageProtocol": "hdfs",
+  "support": {
+   "email": "support@trifacta.com",
+   "phoneNumber": "+1 844 332 2821",
+   "site": "https://www.trifacta.com/support"
+  },
+  "swaggerUI": {
+   "distPath": "src/server/dist",
+   "enabled": false
+  },
+  "timeoutMilliseconds": 120000,
+  "tracing": {
+   "collectorEndpoint": "http://127.0.01:9411/api/v2/spans",
+   "enabled": false,
+   "sampler": {
+    "param": 1,
+    "type": "const"
+   }
+  },
+  "typeInferenceCharLimit": 10240,
+  "upgradeUI": {
+   "connectivity": {
+    "callToActionText": "Chat to Learn More",
+    "descriptionParagraphs": [
+     "Connecting to external data sources such as databases, files systems, apps and cloud storage is not supported in the free Wrangler edition.",
+     "Upgrading to Wrangler Pro provides expanded connectivity as well as scheduling, collaboration, and higher data volume limits."
+    ],
+    "href": "",
+    "hrefPlaceholder": "",
+    "icon": "upsell-connectivity-icon",
+    "title": "It’s time to upgrade"
+   },
+   "scheduling": {
+    "callToActionText": "Chat to Learn More",
+    "descriptionParagraphs": [
+     "Scheduling wrangling workflows to run on a regular basis (e.g. hourly, daily, weekly) is not supported in the free Wrangler edition.",
+     "Upgrading to Wrangler Pro enables self-service scheduling as well as broader connectivity, collaboration, and higher data volume limits."
+    ],
+    "href": "",
+    "hrefPlaceholder": "",
+    "icon": "upsell-scheduling-icon",
+    "title": "It’s time to upgrade"
+   },
+   "sharing": {
+    "callToActionText": "Chat to Learn More",
+    "descriptionParagraphs": [
+     "Collaborating on flows with your colleagues is not supported in the free Wrangler edition.",
+     "Upgrading to Wrangler Pro enables sharing and collaboration as well as broader connectivity, scheduling, and higher data volume limits."
+    ],
+    "href": "",
+    "hrefPlaceholder": "",
+    "icon": "upsell-sharing-icon",
+    "title": "It’s time to upgrade"
+   },
+   "uploadLargeFiles": {
+    "callToActionText": "Chat to Learn More",
+    "descriptionParagraphs": [
+     "Uploading files greater than 100MB is not supported in the free Wrangler edition.",
+     "Upgrading to Wrangler Pro provides higher data volume limits as well as scheduling, expanded connectivity, and collaboration."
+    ],
+    "href": "",
+    "hrefPlaceholder": "",
+    "icon": "upsell-upload-icon",
+    "title": "It’s time to upgrade"
+   }
+  },
+  "uploadLargeFiles": {
+   "upgradeUI": false
+  },
+  "validateRegistrationEmail": false,
+  "walkthrough": {
+   "datasetBucket": "<S3_BUCKET_HERE>",
+   "datasetPath": "/demo-datasets/customers_sample_data.csv",
+   "datasetProtocol": "hdfs"
+  },
+  "workspaceCapacityLimitation": {
+   "enabled": false,
+   "pollingIntervalInMs": 60000
+  },
+  "yearFourDigitRegex": "((?:1[4-9]|2[0-5])\\d{2})"
+ },
+ "yarn": {
+  "highAvailability": {
+   "resourceManagers": {
+    "rm1": {
+     "adminPort": 8033,
+     "host": "<YOUR_VALUE_HERE>",
+     "port": 8032,
+     "schedulerPort": 8030,
+     "webappPort": 8042
+    },
+    "rm2": {
+     "adminPort": 8033,
+     "host": "<YOUR_VALUE_HERE>",
+     "port": 8032,
+     "schedulerPort": 8030,
+     "webappPort": 8042
+    }
+   }
+  },
+  "resourcemanager": {
+   "adminPort": 8033,
+   "host": "<YOUR_VALUE_HERE>",
+   "port": 8032,
+   "schedulerPort": 8030,
+   "webappPort": 8088
+  }
+ }
+}
